@@ -40,7 +40,7 @@ class Monitor extends events {
         this.previousProducts = [];
         this.currentProducts = [];
 
-        this.site = new URL(this.site).origin;
+        this.site = new URL(this.site);
 
         setInterval(() => {
             console.log('60m Checkup: ' + this.site);

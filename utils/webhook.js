@@ -59,12 +59,12 @@ module.exports = {
                 headers: {
                     'content-type': 'application/json',
                 },
-                body: JSON.stringify(details)
+                body: JSON.stringify({content: 'inital fetch: ' + details})
             })
         } catch (webhookError) {
             console.error('WEBHOOK: ' + webhookError.message);
             await new Promise((resolve) => setTimeout(() => resolve(), 5000));
-            return module.exports.sendWebhook(webhookURL, color, title, productDetails);
+            return module.exports.sendInformativeWebhook(webhookURL, color, title, productDetails);
         }        
     }
 }

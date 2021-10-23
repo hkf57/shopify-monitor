@@ -49,7 +49,7 @@ module.exports = {
         }
     },
 
-    sendInformativeWebhook: async (webhooKURL, color, title, details) => {
+    sendInformativeWebhook: async (webhookURL, color, title, details) => {
         try{
             const embed = {
                 embeds: [{

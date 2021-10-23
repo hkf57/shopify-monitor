@@ -51,21 +51,6 @@ module.exports = {
 
     sendInformativeWebhook: async (webhookURL, color, title, details) => {
         try{
-            const embed = {
-                embeds: [{
-                    author: {
-                        name: `${title}`,
-                    },
-                    color: color,
-                    type: 'rich',
-                    fields: {
-                            name: "Initial fetch",
-                            value: details,
-                            inline: true
-                        },                    
-                    timestamp: new Date().toISOString()
-                }]
-            }
             request.post({
                 url: webhookURL,
                 followAllRedirects: true,
@@ -74,7 +59,7 @@ module.exports = {
                 headers: {
                     'content-type': 'application/json',
                 },
-                body: JSON.stringify(embed)
+                body: JSON.stringify(details)
             })
         } catch (webhookError) {
             console.error('WEBHOOK: ' + webhookError.message);

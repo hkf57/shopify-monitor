@@ -27,7 +27,6 @@ require('console-stamp')(console, 'HH:MM:ss.l');
 
 const {
     sleep,
-    formatProxy,
     getRandomArbitrary
 } = require('../../utils/tools.js');
 const config = require('../../config/config.json');

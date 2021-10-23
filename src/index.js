@@ -3,12 +3,9 @@ const { sendWebhook } = require('../utils/webhook.js');
 
 const fs = require('fs');
 
-let proxies = [],
-    sites = [],
+let sites = [],
     webhooks = [];
 
-fs.readFileSync(__dirname + '/../config/proxies.txt', 'utf-8')
-    .split(/\r?\n/).forEach(line => proxies.push(line));
 fs.readFileSync(__dirname + '/../config/sites.txt', 'utf-8')
     .split(/\r?\n/).forEach(line => sites.push(line));
 fs.readFileSync(__dirname + '/../config/webhooks.txt', 'utf-8')
@@ -19,8 +16,7 @@ fs.readFileSync(__dirname + '/../config/webhooks.txt', 'utf-8')
 
 sites.forEach(site => {
     const currentMonitor = new Monitor({
-        site,
-        proxies
+        site
     });
 
     console.log('Monitor Started for ' + site);

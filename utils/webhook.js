@@ -58,13 +58,11 @@ module.exports = {
                     },
                     color: color,
                     type: 'rich',
-                    fields: productDetails.restockedVariants.map((variant) => {
-                        return {
+                    fields: {
                             name: "Initial fetch",
                             value: details,
                             inline: true
-                        }
-                    }),
+                        },                    
                     timestamp: new Date().toISOString()
                 }]
             }

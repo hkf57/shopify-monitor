@@ -47,5 +47,41 @@ module.exports = {
             await new Promise((resolve) => setTimeout(() => resolve(), 5000));
             return module.exports.sendWebhook(webhookURL, color, title, productDetails);
         }
+    },
+
+    sendInformativeWebhook: async (webhooKURL, color, title, details) => {
+        try{
+            const embed = {
+                embeds: [{
+                    author: {
+                        name: `${title}`,
+                    },
+                    color: color,
+                    type: 'rich',
+                    fields: productDetails.restockedVariants.map((variant) => {
+                        return {
+                            name: "Initial fetch",
+                            value: details,
+                            inline: true
+                        }
+                    }),
+                    timestamp: new Date().toISOString()
+                }]
+            }
+            request.post({
+                url: webhookURL,
+                followAllRedirects: true,
+                simple: false,
+                resolveWithFullResponse: true,
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(embed)
+            })
+        } catch (webhookError) {
+            console.error('WEBHOOK: ' + webhookError.message);
+            await new Promise((resolve) => setTimeout(() => resolve(), 5000));
+            return module.exports.sendWebhook(webhookURL, color, title, productDetails);
+        }        
     }
 }

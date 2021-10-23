@@ -20,7 +20,9 @@ sites.forEach(site => {
     });
 
     console.log('Monitor Started for ' + site);
-
+    currentMonitor.on('initProductFetch', productDetails => {
+        sendWebhook(webhooks[i], 1305395, 'Products Loaded', productDetails);
+    });
     currentMonitor.on('newProduct', productDetails => {
         for (let i = 0; i < webhooks.length; i++) {
             sendWebhook(webhooks[i], 1305395, 'New Product', productDetails);

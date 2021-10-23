@@ -1,5 +1,5 @@
 const Monitor = require('./class/monitor.js');
-const { sendWebhook } = require('../utils/webhook.js');
+const { sendWebhook, sendInformativeWebhook } = require('../utils/webhook.js');
 
 const fs = require('fs');
 

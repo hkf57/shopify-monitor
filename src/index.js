@@ -21,7 +21,7 @@ sites.forEach(site => {
 
     console.log('Monitor Started for ' + site);
     currentMonitor.on('initProductFetch', productDetails => {
-        console.log('info webhook sent')
+        console.log('info webhook sent - ' + productDetails + ' products')
         sendInformativeWebhook(webhooks[0], 1305395, 'Products Loaded', productDetails);
     });
     currentMonitor.on('newProduct', productDetails => {

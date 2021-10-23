@@ -54,7 +54,7 @@ module.exports = {
             request.post({
                 url: webhookURL,
                 followAllRedirects: true,
-                simple: false,
+                simple: true,
                 resolveWithFullResponse: true,
                 headers: {
                     'content-type': 'application/json',

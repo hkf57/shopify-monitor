@@ -23,7 +23,7 @@ module.exports = {
                     fields: productDetails.restockedVariants.map((variant) => {
                         return {
                             name: (variant.available) ? `${variant.title}: ${(variant.inventory_quantity) ? variant.inventory_quantity : '1+'} Stock` : `${variant.title}: OOS`,
-                            value: (variant.available) ? `[ATC](${productDetails.site}/cart/${variant.id}:1)` : `${variant.id}`,
+                            value: (variant.available) ? `[ATC](${new URL(productDetails.site).origin}/cart/${variant.id}:1)` : `${variant.id}`,
                             inline: true
                         }
                     }),

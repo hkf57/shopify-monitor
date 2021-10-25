@@ -73,7 +73,7 @@ class Monitor extends events {
             await sleep(config.delay);
             return this.initMonitor();
         }
-        this.emit('initProductFetch', response.body.products.length);
+        // this.emit('initProductFetch', response.body.products.length);
         this.monitorLoop(1);
     }
 

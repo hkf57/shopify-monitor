@@ -123,6 +123,12 @@ class Monitor extends events {
                     }
                     // @DEBUG: console.log(productDetails);
                     this.emit('newProduct', productDetails);
+                    if (!productDetails.product.title.some(config.exclude)){
+                        this.emit('newProduct', productDetails);
+                    }
+                    else {
+                        console.log(productDetails);
+                    }
                 })
             }
 

@@ -158,7 +158,12 @@ class Monitor extends events {
 
         if (restockDetails.restockedVariants.length) {
             // @DEBUG: console.log(restockDetails);
-            this.emit('restockedProduct', restockDetails);
+            if (!restockDetails.product.title.some(config.exclude)){
+                this.emit('restockedProduct', restockDetails);
+            }
+            else {
+                console.log(productDetails);
+            }
         }
     }
 }

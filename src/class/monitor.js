@@ -158,7 +158,7 @@ class Monitor extends events {
 
         if (restockDetails.restockedVariants.length) {
             // @DEBUG: console.log(restockDetails);
-            if (!restockDetails.product.title.some(config.exclude)){
+            if (restockDetails.restockedVariants.map((restocked) => {return restocked.available && !restocked.title.some(config.exclude)})){
                 this.emit('restockedProduct', restockDetails);
             }
             else {

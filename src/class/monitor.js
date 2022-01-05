@@ -122,7 +122,6 @@ class Monitor extends events {
                         restockedVariants: product.variants
                     }
                     // @DEBUG: console.log(productDetails);
-                    this.emit('newProduct', productDetails);
                     if (!productDetails.product.title.some(config.exclude)){
                         this.emit('newProduct', productDetails);
                     }

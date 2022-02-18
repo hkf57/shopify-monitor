@@ -122,7 +122,7 @@ class Monitor extends events {
                         restockedVariants: product.variants
                     }
                     // @DEBUG: console.log(productDetails);
-                    if (!productDetails.product.title.includes(config.exclude)){
+                    if (config.exclude(x => productDetails.product.title.includes(x))){
                         this.emit('newProduct', productDetails);
                     }
                     else {
@@ -158,7 +158,7 @@ class Monitor extends events {
 
         if (restockDetails.restockedVariants.length) {
             // @DEBUG: console.log(restockDetails);
-            if (restockDetails.restockedVariants.map((restocked) => {return restocked.title && restocked.available && !restocked.title.includes(config.exclude)})){
+            if (restockDetails.restockedVariants.map((restocked) => {return restocked.title && restocked.available && config.exclude(x => restocked.title.includes(x))})){
                 this.emit('restockedProduct', restockDetails);
             }
             else {

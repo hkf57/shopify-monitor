@@ -122,7 +122,7 @@ class Monitor extends events {
                         restockedVariants: product.variants
                     }
                     // @DEBUG: console.log(productDetails);
-                    if (!config.exclude.some(x => productDetails.product.title.includes(x))){
+                    if (doesNotIncludeShittySets(productDetails.product.title)) {
                         this.emit('newProduct', productDetails);
                     }
                     else {
@@ -158,7 +158,7 @@ class Monitor extends events {
 
         if (restockDetails.restockedVariants.length) {
             // @DEBUG: console.log(restockDetails);
-            if (restockDetails.restockedVariants.map((restocked) => {return restocked.title && restocked.available && !config.exclude.some(x => restocked.title.includes(x))})){
+            if (restockDetails.restockedVariants.map(restocked => restocked.title && restocked.available && doesNotIncludeShittySets(restocked.title))) {
                 this.emit('restockedProduct', restockDetails);
             }
             else {
@@ -167,5 +167,7 @@ class Monitor extends events {
         }
     }
 }
+
+const doesNotIncludeShittySets = (value) => config.exclude.every(x => !value.includes(x))
 
 module.exports = Monitor;

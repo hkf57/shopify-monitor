@@ -150,7 +150,7 @@ class Monitor extends events {
         }
 
         product.variants.forEach((variant) => {
-            if (variant.available && !oldProduct.variants.find((_variant) => _variant.id == variant.id).available) {
+            if (variant.available && !oldProduct.variants.find((_variant) => _variant.id == variant.id)?.available) {
                 restockDetails.restockedVariants.push(variant);
                 // @DEBUG: console.log(restockDetails.restockedVariants);
             }

@@ -1,4 +1,4 @@
 {
-    "delay": 10000,
+    "delay": 5000,
     "exclude": ["KAT", "KAM", "MW", "SA", "DCS"]
 }
